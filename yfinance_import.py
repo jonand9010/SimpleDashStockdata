@@ -16,33 +16,28 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output 
 import plotly.graph_objects as go
 
-import seaborn as sns
-
-
-
-#external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-#app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SLATE]) 
+colors = {'text': '#eeeeee', 'background': '#eeeeee'}
 app = dash.Dash()
-app.title = 'Jonas\'s Financial Dashboard'
 app.layout = html.Div([ 
+    html.H1('Financial Dashboard', style={'background-color': colors['text']}),
     html.Div([ 
         html.Div([ 
             dcc.Dropdown(id='company_selection1',options=[
             {'label': 'Tesla', 'value': 'TSLA'},
             {'label': 'Apple', 'value': 'AAPL'},
             {'label': 'Google', 'value': 'GOOG'}],
-            value = 'TSLA')]),
-        dcc.Graph(id ='figure1', style={'background-color': '#eeeeee', 'padding': 10}),
+            value = 'TSLA')], style={'background-color': colors['background']}),
+        dcc.Graph(id ='figure1', style={'background-color': colors['background'], 'padding': 10}),
     
         html.Div([ 
             dcc.Dropdown(id='company_selection2',options=[
             {'label': 'Tesla', 'value': 'TSLA'},
             {'label': 'Apple', 'value': 'AAPL'},
             {'label': 'Google', 'value': 'GOOG'}],
-            value = 'AAPL', style={'background-color': '#eeeeee', 'padding': 10})]),
-        dcc.Graph(id ='figure2', style={'background-color': '#eeeeee', 'padding': 10}),
-        ])
-    ],style= {'backgroundcolor': '#eeeeee'})    
+            value = 'AAPL')]),
+        dcc.Graph(id ='figure2', style={'background-color': colors['background'], 'padding': 10}),
+        ], style={'background-color': colors['background']})
+    ],style= {'background-color': colors['background']})    
             
     #html.H3(id='text'),
 
@@ -73,7 +68,7 @@ def plot_financial_data(company):
     datapoints = {'data': [go.Line(x=df.index, y=df.Close.values,
             marker_color='lightsalmon',
             name='Net Income')], 'layout': dict(xaxis={'title':'Date'}, 
-            yaxis={'title':'Close'}, paper_bgcolor = '#eeeeee', plot_bgcolor = '#eeeeee' )}
+            yaxis={'title':'Close'}, paper_bgcolor = colors['background'], plot_bgcolor = colors['background'])}
         
     return datapoints
 
@@ -91,7 +86,7 @@ def plot_financial_data(company):
     datapoints = {'data': [go.Line(x=df.index, y=df.Close.values,
             marker_color='lightsalmon',
             name='Net Income')], 'layout': dict(xaxis={'title':'Date'}, 
-            yaxis={'title':'Close'}, paper_bgcolor = '#eeeeee', plot_bgcolor = '#eeeeee' )}
+            yaxis={'title':'Close'}, paper_bgcolor = colors['background'], plot_bgcolor = colors['background'] )}
         
     return datapoints
 # %%

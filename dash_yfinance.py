@@ -15,6 +15,7 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output 
 import plotly.graph_objects as go
+import yfinance as yf
 
 colors = {'text': '#eeeeee', 'background': '#eeeeee'}
 app = dash.Dash()
@@ -42,7 +43,7 @@ app.layout = html.Div([
     #html.H3(id='text'),
 
 
-import yfinance as yf
+
 #import seaborn as sns
 #sns.set()
 
